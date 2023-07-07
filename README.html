@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+    <title>Voice Assistant:  HD</title>
+</head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color:color-mix(in srgb,black 50%, white 50%);
+            
+        }
+
+        h1 {
+            text-align: center;
+            color: #150df576;
+            display: flexbox;
+            height: 90px;
+          
+        }
+
+        .assistant {
+            text-align: center;
+            margin: 50px auto;
+            padding: 20px;
+            background-color:color-mix(in srgb, blue 40%, white 30% , black 30%);
+            border-radius: 50%;
+            box-shadow: 0 20px 30px rgba(248, 240, 240, 0.728);
+            height: 500px;
+            width: 500px;
+           
+        }
+
+        .response {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        button {
+            display: flexbox;
+            padding: 10px 20px;
+            margin: 40px;
+            background-color: #007bff;
+            color: #ffffff;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        button:hover {
+            background-color: #b34500;
+        }
+        p{
+          
+            text-align: center;
+            display: flexbox;
+            color:color-mix(in srgb,black 70% , white 30%);
+            font-size: 50px;
+            height:30px ;
+            text-shadow: 0 2px 4px  #ffffff;
+        }
+
+        .response{
+            justify-content: left;
+        }
+    .ask{
+        background-color: #ffffff;
+        width: 800px;
+        height: 100px;
+        border-radius: 10px;
+        text-align: center;
+        margin: auto;
+      
+    }
+    </style>
+
+<body>
+    <h1>Voice Assistant</h1>
+    <div class="assistant">
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>Click the button and ask me a question:</p>
+        <br>
+        <br>
+        <button onclick="speak()">Click </button>
+       
+    </div>
+    <div class="ask">
+    <p class="response" id="response"> said:</p>
+</div>
+    <script>
+        function speak() {
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+            recognition.lang = 'en-IN';
+
+            recognition.onresult = function(event) {
+                const result = event.results[0][0].transcript;
+                document.getElementById('response').textContent =('You asked: ' + result);
+                speakResponse(result);
+               
+                
+              
+            };
+
+            recognition.start();
+        }
+       
+         function speakResponse(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'hi-IN';
+            speechSynthesis.speak(utterance);}
+      alert("HY I AM VOICE ROBO , CREATE BY MR. HIMANSHU , ........ WELCOME TO MY WEBSITE ❤️")
+
+    </script>
+</body>
+</html>
